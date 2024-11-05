@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
                 return Container(
                   child: Text("Error"),
                 );
-                }else if (status == Status.initial) {
+                } else if (status == Status.initial) {
                 return const SizedBox.shrink();
               }
             }

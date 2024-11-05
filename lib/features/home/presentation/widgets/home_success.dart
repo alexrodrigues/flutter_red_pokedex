@@ -10,6 +10,7 @@ class HomeSuccess extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<HomeBloc>().state;
+    final textTheme = Theme.of(context).textTheme;
     return ListView.builder(
       itemCount: state.result.length,
       itemBuilder: (BuildContext context, int index) {
@@ -46,7 +47,45 @@ class HomeSuccess extends StatelessWidget {
                     ],
                   ),
                 ),
-                Text(pokemon.name.toUpperCase())
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        "#${pokemon.id.toString()} - ${pokemon.name.toUpperCase()}",
+                        style: textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white70,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 4.0,
+                      ),
+                      ...pokemon.types.map((element) => Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: Container(
+                              padding: const EdgeInsets.all(8.0),
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16.0),
+                                border: Border.all(color: Colors.white),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  element.type.name,
+                                  style: textTheme.bodySmall?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white70,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ))
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
