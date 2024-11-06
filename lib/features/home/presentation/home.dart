@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
             child: BlocBuilder<HomeBloc, HomeState>(
           buildWhen: (previous, current) => previous != current,
           builder: (context, state) {
+            
             final status = state.status;
             if (state.firstPage) {
               if (status == Status.loading) {

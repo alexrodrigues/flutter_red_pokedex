@@ -12,6 +12,10 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:pokedex/pokedex.dart' as _i706;
 import 'package:red_pokedex/api/pokedex_api.dart' as _i642;
+import 'package:red_pokedex/features/details/domain/get_pokemon_details_usecase.dart'
+    as _i27;
+import 'package:red_pokedex/features/details/presentation/bloc/details_bloc.dart'
+    as _i658;
 import 'package:red_pokedex/features/home/domain/get_pokedex_home_usecase.dart'
     as _i107;
 import 'package:red_pokedex/features/home/presentation/bloc/home_bloc.dart'
@@ -34,6 +38,10 @@ _i174.GetIt init(
       () => _i107.GetPokedexHomeUsecaseImpl(gh<_i706.Pokedex>()));
   gh.factory<_i473.HomeBloc>(
       () => _i473.HomeBloc(gh<_i107.GetPokedexHomeUsecase>()));
+  gh.factory<_i27.GetPokemonDetailsUsecase>(
+      () => _i27.GetPokemonDetailsUsecaseImpl(gh<_i706.Pokedex>()));
+  gh.factory<_i658.DetailsBloc>(
+      () => _i658.DetailsBloc(gh<_i27.GetPokemonDetailsUsecase>()));
   return getIt;
 }
 
