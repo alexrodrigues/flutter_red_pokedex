@@ -19,8 +19,7 @@ class _HomePageState extends State<HomePage> {
       create: (providerContext) =>
           GetIt.I.get<HomeBloc>()..add(const PokemonsRequestEvent()),
       child: Scaffold(
-        body: SafeArea(
-            child: BlocBuilder<HomeBloc, HomeState>(
+        body: BlocBuilder<HomeBloc, HomeState>(
           buildWhen: (previous, current) => previous != current,
           builder: (context, state) {
             final status = state.status;
@@ -33,13 +32,13 @@ class _HomePageState extends State<HomePage> {
                 return Container(
                   child: Text("Error"),
                 );
-                } else if (status == Status.initial) {
+              } else if (status == Status.initial) {
                 return const SizedBox.shrink();
               }
             }
             return const HomeSuccess();
           },
-        )),
+        ),
       ),
     );
   }
