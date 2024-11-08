@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/pokedex.dart';
 import 'package:red_pokedex/features/components/poke_card.dart';
 import 'package:red_pokedex/features/details/presentation/bloc/details_bloc.dart';
+import 'package:red_pokedex/features/details/presentation/widgets/details_about.dart';
 import 'package:red_pokedex/theme/theme.dart';
 
 class DetailsSuccess extends StatefulWidget {
@@ -80,7 +81,7 @@ class _DetailsSuccessState extends State<DetailsSuccess>
                         child: TabBarView(
                           controller: _tabController,
                           children: [
-                            Center(child: Text('About Content')),
+                            DetailsAbout(pokemon: widget.pokemon),
                             Center(child: Text('Stats Content')),
                             Center(child: Text('Evolution Content')),
                           ],
